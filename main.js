@@ -43,6 +43,7 @@ startGame.addEventListener("click", () => {
   });
   deck = shuffle(deck);
   deck = shuffle(deck);
+  console.log(deck.length)
   initializeDB();
   window.alert("Database Reinitialized: Game Started");
 });
