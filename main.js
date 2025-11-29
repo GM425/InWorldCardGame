@@ -31,6 +31,19 @@ const db = getDatabase(app); // Firestore, not Realtime Database
 // getMain.addEventListener("click", rollD6);
 // const getPassword = document.getElementById("passwordButton");
 // getPassword.addEventListener("click", enterPassword);
+const startGame = document.getElementById("start");
+startGame.addEventListener("click", () => {
+  window.alert("Database Reinitialized Button Pressed");
+  baseDeck.forEach((card) => {
+    for (let i = 0; i < card.count; i++) {
+      deck.push({ name: card.name, value: card.value });
+    }
+  });
+  deck = shuffle(deck);
+  deck = shuffle(deck);
+  initializeDB();
+  window.alert("Database Reinitialized: Game Started");
+});
 
 const baseDeck = [
   { name: "Beggar", value: 0, count: 15 },
@@ -53,11 +66,7 @@ const baseDeck = [
 ];
 
 let deck = [];
-baseDeck.forEach((card) => {
-  for (let i = 0; i < card.count; i++) {
-    deck.push({name: card.name, value: card.value});
-  }
-});
+
 
 function shuffle(deck) {
   for (let i = deck.length - 1; i > 0; i--) {
@@ -67,8 +76,6 @@ function shuffle(deck) {
   return deck;
 }
 
-deck = shuffle(deck);
-deck = shuffle(deck);
 
 async function initializeDB() {
   try {
@@ -81,7 +88,6 @@ async function initializeDB() {
   }
 }
 
-initializeDB();
 
 const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", () => {
