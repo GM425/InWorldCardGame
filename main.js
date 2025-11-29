@@ -83,13 +83,6 @@ async function initializeDB() {
 
 initializeDB();
 
-// function enterPassword() {
-//   password = prompt("what is password");
-//   if (password === "StarterFluidForLife") {
-//     getMain.style.display = "inline-block";
-//   }
-// }
-
 const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", () => {
   window.alert("initial 3 ran")
@@ -99,33 +92,42 @@ drawInitialButton.addEventListener("click", () => {
 
 function getThree(){
   window.alert("three ran");
-  let index1 = Math.floor(Math.random() * deck.length);
-  let index2 = Math.floor(Math.random() * deck.length);
-  let index3 = Math.floor(Math.random() * deck.length);
+  let card1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+  let card2 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+  let card3 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
 
-  let card1 = deck.splice(index1, 1)[0];
-    console.log(card1);
+  // let index1 = Math.floor(Math.random() * deck.length);
+  // let index2 = Math.floor(Math.random() * deck.length);
+  // let index3 = Math.floor(Math.random() * deck.length);
 
-  console.log(window.alert("You drew the " + card1.name + "with a value of " + card1.value));
-  window.alert("You drew the " + card1.name + "with a value of " + card1.value);
-  let card2 = deck.splice(index2, 1)[0];
-    console.log(card2);
+  // let card1 = deck.splice(index1, 1)[0];
+  //   console.log(card1);
 
-    console.log(
-      window.alert(
-        "You drew the " + card1.name + "with a value of " + card1.value
-      )
-    );
+  // console.log(window.alert("You drew the " + card1.name + "with a value of " + card1.value));
+  // window.alert("You drew the " + card1.name + "with a value of " + card1.value);
+  // let card2 = deck.splice(index2, 1)[0];
+  //   console.log(card2);
+  console.log(card1, card2, card3);
 
-  window.alert("You drew the " + card2.name + "with a value of " + card2.value);
-  let card3 = deck.splice(index3, 1)[0];
-  console.log(card3);
-    console.log(
-      window.alert(
-        "You drew the " + card1.name + "with a value of " + card1.value
-      )
-    );
-  window.alert("You drew the " + card3.name + "with a value of " + card3.value);
+  window.alert(`You drew ${card1.name} with a value of ${card1.value}`);
+  window.alert(`You drew ${card2.name} with a value of ${card2.value}`);
+  window.alert(`You drew ${card3.name} with a value of ${card3.value}`);
+
+  //   console.log(
+  //     window.alert(
+  //       "You drew the " + card1.name + "with a value of " + card1.value
+  //     )
+  //   );
+
+  // window.alert("You drew the " + card2.name + "with a value of " + card2.value);
+  // let card3 = deck.splice(index3, 1)[0];
+  // console.log(card3);
+  //   console.log(
+  //     window.alert(
+  //       "You drew the " + card1.name + "with a value of " + card1.value
+  //     )
+  //   );
+  // window.alert("You drew the " + card3.name + "with a value of " + card3.value);
 }
 
 async function setDeck(){
