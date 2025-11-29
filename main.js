@@ -55,7 +55,7 @@ const baseDeck = [
 let deck = [];
 baseDeck.forEach((card) => {
   for (let i = 0; i < card.count; i++) {
-    deck.push({ ...card });
+    deck.push({name: card.name, value: card.value});
   }
 });
 
@@ -92,9 +92,9 @@ initializeDB();
 
 const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", () => {
+  window.alert("initial 3 ran")
   getThree;
   setDeck;
-  console.log("Deck updated");
 });
 
 function getThree(){
