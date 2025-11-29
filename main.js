@@ -34,6 +34,7 @@ const db = getDatabase(app); // Firestore, not Realtime Database
 const startGame = document.getElementById("start");
 startGame.addEventListener("click", () => {
   window.alert("Database Reinitialized Button Pressed");
+  let deck = [];
   baseDeck.forEach((card) => {
     for (let i = 0; i < card.count; i++) {
       deck.push({ name: card.name, value: card.value });
@@ -65,7 +66,7 @@ const baseDeck = [
   { name: "Serpent", value: 0, count: 1 },
 ];
 
-let deck = [];
+// let deck = [];
 
 
 function shuffle(deck) {
