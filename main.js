@@ -19,8 +19,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app); // Firestore, not Realtime Database
-const db = getDoc(app); // Firestore, not Realtime Database
+const db = getFirestore(app); // Firestore, not Realtime Database
+// const db = getDoc(app); // Firestore, not Realtime Database
 
 
 let password = "unconfirmed";
