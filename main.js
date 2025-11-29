@@ -73,7 +73,8 @@ deck = shuffle(deck);
 
 async function initializeDB() {
   try {
-    await setDoc(doc(db, "deck"), deck);
+    const deckRefInitial = doc(db, "games", "deck"); // collection: "games", document: "deck"
+    await setDoc(deckRefInitial, { deck: deck});
     window.alert("Write successful!");
   } catch (err) {
     console.error("Write failed:", err);
@@ -100,7 +101,8 @@ drawInitialButton.addEventListener("click", async () => {
   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
   let card3 = deck.splice(index, 1);
   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
-  await setDoc(doc(db, "deck"), deck); // ✅ OK now
+  const deckRef = doc(db, "deck");
+  await setDoc(doc(deckRef, data), deck); // ✅ OK now
   console.log("Deck updated");
 });
 
@@ -110,6 +112,7 @@ drawButton.addEventListener("click", async () => {
   let index = Math.floor(Math.random() * deck.length);
   let card = deck.splice(index, 1);
   window.alert("You drew the " + card.name + "with a value of " + card.value);
+  const deckRef = doc(db, "games", "deck"); // collection: "games", document: "deck"
   await setDoc(doc(db, "deck"), deck); // ✅ OK now
   console.log("Deck updated");
 });
