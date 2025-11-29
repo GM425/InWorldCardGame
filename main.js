@@ -19,7 +19,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); // Firestore, not Realtime Database
+// const db = getFirestore(app); // Firestore, not Realtime Database
+const db = getDoc(app); // Firestore, not Realtime Database
+
 
 let password = "unconfirmed";
 
@@ -71,7 +73,7 @@ deck = shuffle(deck);
 
 async function initializeDB() {
   try {
-    await set(ref(db, "deck"), deck);
+    await setDoc(doc(db, "deck"), deck);
     window.alert("Write successful!");
   } catch (err) {
     console.error("Write failed:", err);
