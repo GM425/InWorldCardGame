@@ -1,11 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
 import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-  collection,
-} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+  getDatabase,
+  ref,
+  set,
+} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAx4T939TN21bEChU3d0ObbeJqaV-QSXKo",
@@ -19,9 +17,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); // Firestore, not Realtime Database
+const db = getDatabase(app); // Firestore, not Realtime Database
 // const db = getDoc(app); // Firestore, not Realtime Database
-
 
 // let password = "unconfirmed";
 
@@ -48,7 +45,7 @@ const baseDeck = [
   { name: "Thief", value: 10, count: 1 },
   { name: "Thief", value: 5, count: 1 },
   { name: "Thief", value: 3, count: 1 },
-  { name: "Thief", value: 1, count: 1 },
+  { name: "Thief", value: 25, count: 1 },
   { name: "Harlet", value: 0, count: 3 },
   { name: "Serpent", value: 0, count: 1 },
 ];
@@ -73,14 +70,15 @@ deck = shuffle(deck);
 
 async function initializeDB() {
   try {
-    const deckRefInitial = doc(db, "games", "deck"); // collection: "games", document: "deck"
-    await setDoc(deckRefInitial, { deck: deck});
-    window.alert("Write successful!");
+    await set(ref(db, "deck"), deck); // simple path
+    await set(ref(db, "hands/player1"), []);
+    await set(ref(db, "hands/player2"), []);
+    console.log("Deck and hands initialized!");
   } catch (err) {
     console.error("Write failed:", err);
   }
 }
-// window.onload(enterPassword())
+
 initializeDB();
 
 // function enterPassword() {
