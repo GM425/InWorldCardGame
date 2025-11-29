@@ -17,6 +17,8 @@ const firebaseConfig = {
   measurementId: "G-447S4KV617",
 };
 
+
+
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 
@@ -68,8 +70,16 @@ function shuffle(deck) {
 deck = shuffle(deck);
 deck = shuffle(deck);
 
-await set(ref(db,"deck"), deck);
+async function initializeDB(){
+    try {
+        await set(ref(db, "deck"), deck);
+        window.alert("Write successful!");
+    } catch (err) {
+        console.error("Write failed:", err);
+    }
+}
 // window.onload(enterPassword())
+initializeDB();
 
 
 function enterPassword(){
