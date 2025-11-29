@@ -74,6 +74,7 @@ const drawInitialButton = document.getElementById("drawBtn");
 
 drawInitialButton.addEventListener("click", async () => {
   // <-- add async here
+  window.alert("draw ran")
   let index = Math.floor(Math.random() * deck.length);
   let card1 = deck.splice(index, 1);
   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
