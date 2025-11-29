@@ -19,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app); // Firestore, not Realtime Database
 // const db = getDoc(app); // Firestore, not Realtime Database
+let deck = [];
 
 // let password = "unconfirmed";
 
@@ -34,7 +35,7 @@ const db = getDatabase(app); // Firestore, not Realtime Database
 const startGame = document.getElementById("start");
 startGame.addEventListener("click", () => {
   window.alert("Database Reinitialized Button Pressed");
-  let deck = [];
+  deck = [];
   baseDeck.forEach((card) => {
     for (let i = 0; i < card.count; i++) {
       deck.push({ name: card.name, value: card.value });
