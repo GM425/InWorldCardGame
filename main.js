@@ -99,11 +99,18 @@ drawInitialButton.addEventListener("click", () => {
 
 function getThree(){
   window.alert("three ran");
-  let index = Math.floor(Math.random() * deck.length);
-  let card1 = deck.splice(index, 1)[0];
+  let index1 = Math.floor(Math.random() * deck.length);
+  let index2 = Math.floor(Math.random() * deck.length);
+  let index3 = Math.floor(Math.random() * deck.length);
+
+  let card1 = deck.splice(index1, 1)[0];
+    console.log(card1);
+
   console.log(window.alert("You drew the " + card1.name + "with a value of " + card1.value));
   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
-  let card2 = deck.splice(index, 1)[0];
+  let card2 = deck.splice(index2, 1)[0];
+    console.log(card2);
+
     console.log(
       window.alert(
         "You drew the " + card1.name + "with a value of " + card1.value
@@ -111,13 +118,13 @@ function getThree(){
     );
 
   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
-  let card3 = deck.splice(index, 1)[0];
+  let card3 = deck.splice(index3, 1)[0];
+  console.log(card3);
     console.log(
       window.alert(
         "You drew the " + card1.name + "with a value of " + card1.value
       )
     );
-
   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
 }
 
