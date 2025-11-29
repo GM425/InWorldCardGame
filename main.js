@@ -22,7 +22,9 @@ const db = getDatabase(app); // Firestore, not Realtime Database
 
 // let password = "unconfirmed";
 
-// const drawInitialButton = document.getElementById("drawBtn");
+// const drawInitialButton = document.getElementById("drawInitialBtn");
+// drawInitialButton.addEventListener("click", rollD6);
+
 // const drawButton = document.getElementById("drawBtn") ;
 // drawButton.addEventListener("click", rollD6);
 // const getMain = document.getElementById("mainScreen");
@@ -107,6 +109,8 @@ drawInitialButton.addEventListener("click", async () => {
 const drawButton = document.getElementById("drawBtn");
 drawButton.addEventListener("click", async () => {
   // <-- add async here
+    window.alert("draw ran");
+
   let index = Math.floor(Math.random() * deck.length);
   let card = deck.splice(index, 1);
   window.alert("You drew the " + card.name + "with a value of " + card.value);
