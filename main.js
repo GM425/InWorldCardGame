@@ -91,9 +91,14 @@ initializeDB();
 // }
 
 const drawInitialButton = document.getElementById("drawInitialBtn");
-drawInitialButton.addEventListener("click", async () => {
-  // <-- add async here
-  window.alert("draw ran");
+drawInitialButton.addEventListener("click", () => {
+  getThree;
+  setDeck;
+  console.log("Deck updated");
+});
+
+function getThree(){
+  window.alert("three ran");
   let index = Math.floor(Math.random() * deck.length);
   let card1 = deck.splice(index, 1);
   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
@@ -101,10 +106,19 @@ drawInitialButton.addEventListener("click", async () => {
   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
   let card3 = deck.splice(index, 1);
   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
-//   const deckRef = doc(db, "deck");
-  await set(ref(db, "deck"), deck); // simple path
-  console.log("Deck updated");
-});
+}
+
+async function setDeck(){
+  try {
+    await set(ref(db, "deck"), deck); // simple path
+    // await set(ref(db, "hands/player1"), []);
+    // await set(ref(db, "hands/player2"), []);
+    // console.log("Deck and hands initialized!");
+    console.log("Deck Set!");
+  } catch (err) {
+    console.error("Write failed:", err);
+  }
+}
 
 const drawButton = document.getElementById("drawBtn");
 drawButton.addEventListener("click", async () => {
