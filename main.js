@@ -22,10 +22,13 @@ const db = getDatabase(app)
 
 let password = "unconfirmed";
 
-const drawInitialButton = document.getElementById("drawBtn");
-const drawButton = document.getElementById("drawBtn");
-const getMain = document.getElementById("mainScreen");
-
+// const drawInitialButton = document.getElementById("drawBtn");
+// const drawButton = document.getElementById("drawBtn") ;
+// drawButton.addEventListener("click", rollD6);
+// const getMain = document.getElementById("mainScreen");
+// getMain.addEventListener("click", rollD6);
+const getPassword = document.getElementById("passwordButton");
+getPassword.addEventListener("click", enterPassword);
 
 const baseDeck = [
   { name: "Beggar", value: 0, count: 15 },
@@ -66,7 +69,8 @@ deck = shuffle(deck);
 deck = shuffle(deck);
 
 await set(ref(db,"deck"), deck);
-window.onload(enterPassword())
+// window.onload(enterPassword())
+
 
 function enterPassword(){
     password = prompt("what is password");
@@ -75,7 +79,7 @@ function enterPassword(){
     }
 }
 
-
+const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", async () => {
   // <-- add async here
   window.alert("draw ran")
@@ -90,7 +94,7 @@ drawInitialButton.addEventListener("click", async () => {
   console.log("Deck updated");
 });
 
-
+const drawButton = document.getElementById("drawBtn");
 drawButton.addEventListener("click", async () => {
   // <-- add async here
   let index = Math.floor(Math.random() * deck.length);
