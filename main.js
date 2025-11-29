@@ -88,29 +88,29 @@ initializeDB();
 //   }
 // }
 
-// const drawInitialButton = document.getElementById("drawInitialBtn");
-// drawInitialButton.addEventListener("click", async () => {
-//   // <-- add async here
-//   window.alert("draw ran");
-//   let index = Math.floor(Math.random() * deck.length);
-//   let card1 = deck.splice(index, 1);
-//   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
-//   let card2 = deck.splice(index, 1);
-//   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
-//   let card3 = deck.splice(index, 1);
-//   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
+const drawInitialButton = document.getElementById("drawInitialBtn");
+drawInitialButton.addEventListener("click", async () => {
+  // <-- add async here
+  window.alert("draw ran");
+  let index = Math.floor(Math.random() * deck.length);
+  let card1 = deck.splice(index, 1);
+  window.alert("You drew the " + card1.name + "with a value of " + card1.value);
+  let card2 = deck.splice(index, 1);
+  window.alert("You drew the " + card2.name + "with a value of " + card2.value);
+  let card3 = deck.splice(index, 1);
+  window.alert("You drew the " + card3.name + "with a value of " + card3.value);
 //   const deckRef = doc(db, "deck");
-//   await setDoc(doc(deckRef, data), deck); // ✅ OK now
-//   console.log("Deck updated");
-// });
+  await set(ref(db, "deck"), deck); // simple path
+  console.log("Deck updated");
+});
 
-// const drawButton = document.getElementById("drawBtn");
-// drawButton.addEventListener("click", async () => {
-//   // <-- add async here
-//   let index = Math.floor(Math.random() * deck.length);
-//   let card = deck.splice(index, 1);
-//   window.alert("You drew the " + card.name + "with a value of " + card.value);
+const drawButton = document.getElementById("drawBtn");
+drawButton.addEventListener("click", async () => {
+  // <-- add async here
+  let index = Math.floor(Math.random() * deck.length);
+  let card = deck.splice(index, 1);
+  window.alert("You drew the " + card.name + "with a value of " + card.value);
 //   const deckRef = doc(db, "games", "deck"); // collection: "games", document: "deck"
-//   await setDoc(doc(db, "deck"), deck); // ✅ OK now
-//   console.log("Deck updated");
-// });
+  await set(ref(db, "deck"), deck); // simple path
+  console.log("Deck updated");
+});
