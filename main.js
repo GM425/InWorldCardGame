@@ -67,8 +67,8 @@ function shuffle(deck) {
   return deck;
 }
 
-// deck = shuffle(deck);
-// deck = shuffle(deck);
+deck = shuffle(deck);
+deck = shuffle(deck);
 
 async function initializeDB() {
   try {
@@ -101,10 +101,23 @@ function getThree(){
   window.alert("three ran");
   let index = Math.floor(Math.random() * deck.length);
   let card1 = deck.splice(index, 1)[0];
+  console.log(window.alert("You drew the " + card1.name + "with a value of " + card1.value));
   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
   let card2 = deck.splice(index, 1)[0];
+    console.log(
+      window.alert(
+        "You drew the " + card1.name + "with a value of " + card1.value
+      )
+    );
+
   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
   let card3 = deck.splice(index, 1)[0];
+    console.log(
+      window.alert(
+        "You drew the " + card1.name + "with a value of " + card1.value
+      )
+    );
+
   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
 }
 
@@ -128,6 +141,11 @@ drawButton.addEventListener("click", async () => {
   let index = Math.floor(Math.random() * deck.length);
   let card = deck.splice(index, 1);
   window.alert("You drew the " + card.name + "with a value of " + card.value);
+    console.log(
+      window.alert(
+        "You drew the " + card.name + "with a value of " + card.value
+      )
+    );
 //   const deckRef = doc(db, "games", "deck"); // collection: "games", document: "deck"
   await set(ref(db, "deck"), deck); // simple path
   console.log("Deck updated");
