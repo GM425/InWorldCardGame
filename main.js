@@ -66,7 +66,7 @@ window.onload(enterPassword())
 function enterPassword(){
     password = prompt("what is password");
     if (password === "StarterFluidForLife"){
-        GetMain.style.display = "inline-block";
+        mainScreen.style.display = "inline-block";
     }
 }
 
