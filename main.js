@@ -22,6 +22,11 @@ const db = getDatabase(app)
 
 let password = "unconfirmed";
 
+const drawInitialButton = document.getElementById("drawBtn");
+const drawButton = document.getElementById("drawBtn");
+const getMain = document.getElementById("mainScreen");
+
+
 const baseDeck = [
   { name: "Beggar", value: 0, count: 15 },
   { name: "Serf", value: 1, count: 13 },
@@ -66,11 +71,10 @@ window.onload(enterPassword())
 function enterPassword(){
     password = prompt("what is password");
     if (password === "StarterFluidForLife"){
-        mainScreen.style.display = "inline-block";
+        getMain.style.display = "inline-block";
     }
 }
 
-const drawInitialButton = document.getElementById("drawBtn");
 
 drawInitialButton.addEventListener("click", async () => {
   // <-- add async here
@@ -86,7 +90,6 @@ drawInitialButton.addEventListener("click", async () => {
   console.log("Deck updated");
 });
 
-const drawButton = document.getElementById("drawBtn");
 
 drawButton.addEventListener("click", async () => {
   // <-- add async here
