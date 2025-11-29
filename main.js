@@ -96,39 +96,23 @@ function getThree(){
   let card2 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
   let card3 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
 
-  // let index1 = Math.floor(Math.random() * deck.length);
-  // let index2 = Math.floor(Math.random() * deck.length);
-  // let index3 = Math.floor(Math.random() * deck.length);
-
-  // let card1 = deck.splice(index1, 1)[0];
-  //   console.log(card1);
-
-  // console.log(window.alert("You drew the " + card1.name + "with a value of " + card1.value));
-  // window.alert("You drew the " + card1.name + "with a value of " + card1.value);
-  // let card2 = deck.splice(index2, 1)[0];
-  //   console.log(card2);
   console.log(card1, card2, card3);
 
   window.alert(`You drew ${card1.name} with a value of ${card1.value}`);
   window.alert(`You drew ${card2.name} with a value of ${card2.value}`);
   window.alert(`You drew ${card3.name} with a value of ${card3.value}`);
 
-  //   console.log(
-  //     window.alert(
-  //       "You drew the " + card1.name + "with a value of " + card1.value
-  //     )
-  //   );
-
-  // window.alert("You drew the " + card2.name + "with a value of " + card2.value);
-  // let card3 = deck.splice(index3, 1)[0];
-  // console.log(card3);
-  //   console.log(
-  //     window.alert(
-  //       "You drew the " + card1.name + "with a value of " + card1.value
-  //     )
-  //   );
-  // window.alert("You drew the " + card3.name + "with a value of " + card3.value);
 }
+
+function getOne() {
+  window.alert("one ran");
+  let card1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+
+  console.log(card1);
+
+  window.alert(`You drew ${card1.name} with a value of ${card1.value}`);
+}
+
 
 async function setDeck(){
   try {
@@ -143,19 +127,8 @@ async function setDeck(){
 }
 
 const drawButton = document.getElementById("drawBtn");
-drawButton.addEventListener("click", async () => {
-  // <-- add async here
-    window.alert("draw ran");
-
-  let index = Math.floor(Math.random() * deck.length);
-  let card = deck.splice(index, 1);
-  window.alert("You drew the " + card.name + "with a value of " + card.value);
-    console.log(
-      window.alert(
-        "You drew the " + card.name + "with a value of " + card.value
-      )
-    );
-//   const deckRef = doc(db, "games", "deck"); // collection: "games", document: "deck"
-  await set(ref(db, "deck"), deck); // simple path
-  console.log("Deck updated");
+drawButton.addEventListener("click", () => {
+  window.alert("draw ran");
+  getOne();
+  setDeck();
 });
