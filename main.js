@@ -93,8 +93,8 @@ initializeDB();
 const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", () => {
   window.alert("initial 3 ran")
-  getThree;
-  setDeck;
+  getThree();
+  setDeck();
 });
 
 function getThree(){
