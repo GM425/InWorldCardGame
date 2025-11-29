@@ -65,8 +65,8 @@ function shuffle(deck) {
   return deck;
 }
 
-deck = shuffle(deck);
-deck = shuffle(deck);
+// deck = shuffle(deck);
+// deck = shuffle(deck);
 
 async function initializeDB() {
   try {
