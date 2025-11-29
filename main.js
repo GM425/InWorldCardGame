@@ -1,10 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
 import {
-  getDatabase,
-  ref,
-  get,
-  set,
-} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-database.js";
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAx4T939TN21bEChU3d0ObbeJqaV-QSXKo",
@@ -17,10 +18,8 @@ const firebaseConfig = {
   measurementId: "G-447S4KV617",
 };
 
-
-
-const app = initializeApp(firebaseConfig)
-const db = getDatabase(app)
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); // Firestore, not Realtime Database
 
 let password = "unconfirmed";
 
@@ -53,10 +52,10 @@ const baseDeck = [
 ];
 
 let deck = [];
-baseDeck.forEach(card => {
-    for (let i = 0; i < card.count; i++){
-        deck.push({...card});
-    }
+baseDeck.forEach((card) => {
+  for (let i = 0; i < card.count; i++) {
+    deck.push({ ...card });
+  }
 });
 
 function shuffle(deck) {
@@ -70,29 +69,28 @@ function shuffle(deck) {
 deck = shuffle(deck);
 deck = shuffle(deck);
 
-async function initializeDB(){
-    try {
-        await set(ref(db, "deck"), deck);
-        window.alert("Write successful!");
-    } catch (err) {
-        console.error("Write failed:", err);
-    }
+async function initializeDB() {
+  try {
+    await set(ref(db, "deck"), deck);
+    window.alert("Write successful!");
+  } catch (err) {
+    console.error("Write failed:", err);
+  }
 }
 // window.onload(enterPassword())
 initializeDB();
 
-
-function enterPassword(){
-    password = prompt("what is password");
-    if (password === "StarterFluidForLife"){
-        getMain.style.display = "inline-block";
-    }
+function enterPassword() {
+  password = prompt("what is password");
+  if (password === "StarterFluidForLife") {
+    getMain.style.display = "inline-block";
+  }
 }
 
 const drawInitialButton = document.getElementById("drawInitialBtn");
 drawInitialButton.addEventListener("click", async () => {
   // <-- add async here
-  window.alert("draw ran")
+  window.alert("draw ran");
   let index = Math.floor(Math.random() * deck.length);
   let card1 = deck.splice(index, 1);
   window.alert("You drew the " + card1.name + "with a value of " + card1.value);
@@ -100,7 +98,7 @@ drawInitialButton.addEventListener("click", async () => {
   window.alert("You drew the " + card2.name + "with a value of " + card2.value);
   let card3 = deck.splice(index, 1);
   window.alert("You drew the " + card3.name + "with a value of " + card3.value);
-  await set(ref(db, "deck"), deck); // ✅ OK now
+  await setDoc(doc(db, "deck"), deck); // ✅ OK now
   console.log("Deck updated");
 });
 
@@ -110,9 +108,6 @@ drawButton.addEventListener("click", async () => {
   let index = Math.floor(Math.random() * deck.length);
   let card = deck.splice(index, 1);
   window.alert("You drew the " + card.name + "with a value of " + card.value);
-  await set(ref(db, "deck"), deck); // ✅ OK now
+  await setDoc(doc(db, "deck"), deck); // ✅ OK now
   console.log("Deck updated");
 });
-
-
-
